@@ -5,7 +5,7 @@ import cors from 'cors'
 import axios from 'axios'
 import cache from 'memory-cache'
 import { parseFestival } from '../utils/parse'
-import { Festivals } from '../models/festival'
+import { Festival } from '../models/festival'
 
 const app: express.Application = express();
 app.use(bodyParser.urlencoded({ extended: true }))
@@ -20,7 +20,7 @@ app.get('/music-festivals', async function (req, res) {
   let festivals
   const mkey = req.originalUrl
   try {
-    const serverResponse = await axios.get<Festivals>(process.env.MUSIC_FESTIVALS_URL)
+    const serverResponse = await axios.get<Festival[]>(process.env.MUSIC_FESTIVALS_URL)
     festivals = parseFestival(serverResponse.data)
     memoryCache.put(mkey, festivals)
   } catch (e) {

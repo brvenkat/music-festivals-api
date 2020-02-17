@@ -1,11 +1,11 @@
 
 
 import { Response } from '../models/response'
-import { Festivals } from '../models/festival'
+import { Festival } from '../models/festival'
 
 const compareBands = (a,b) => a.name.localeCompare(b.name)
 
-export const parseFestival = (festivals: Festivals): Response[] => {
+export const parseFestival = (festivals: Festival[]): Response[] => {
   if (!Array.isArray(festivals) || festivals.length === 0) {
     return []
   }

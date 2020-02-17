@@ -29,7 +29,10 @@ describe('App', () => {
     ]
   }
   
-  afterAll(() => jest.resetAllMocks())
+  afterAll(async () => {
+    jest.resetAllMocks()
+    await new Promise(resolve => setTimeout(() => resolve(), 1000)); // avoid jest open handle error
+  });
   it('Should handle a normal request', async () => {
     const mockFunction = jest.spyOn(parse, 'parseFestival').mockReturnValue(parserResponse)
     const axiosMock = jest.spyOn(axios, 'get').mockResolvedValue(apiResponse)
