@@ -1,4 +1,4 @@
-# Energy Australia
+# Music festivals API
 
 ## Component Outline
 This is an express app written in typescript that fetch data from Music Festivals API. In case we get error from the music festivals endpoint
